@@ -16,8 +16,11 @@ public class GlobalExceptionHandler {
             return new ResponseEntity<>(message, HttpStatus.CONFLICT);
         } else if (message.equals("Clube não encontrado.") || message.equals("Estádio não encontrado.") || message.equals("Partida não encontrada.")) {
             return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+        } else if (message.equals("Tipo de ranking inválido")) {
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
+
 
 }
