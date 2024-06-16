@@ -1,14 +1,32 @@
 spring:
-  application:
-    name: FutebolAPI
-
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/futebol}
+    username: ${SPRING_DATASOURCE_USERNAME:user}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 30000
+      maximum-pool-size: 10
+      auto-commit: false
+      pool-name: MyHikariCP
+      max-lifetime: 2000000
+      connection-timeout: 30000
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/futebolapi
-    username: root
-    password: root
+    url: jdbc:mysql://db:3306/futebol
+    username: user
+    password: password

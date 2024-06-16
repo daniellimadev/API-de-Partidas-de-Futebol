@@ -1,14 +1,30 @@
-version: '3.1'
+version: '3.8'
 
 services:
-
   db:
-    image: mysql:5.7
-    container_name: container_mysql
-    restart: always
+    image: mysql:8.0
+    container_name: futebol-db
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: futebolapi
-      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: futebol
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     ports:
       - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: futebol-api
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/futebol
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:
