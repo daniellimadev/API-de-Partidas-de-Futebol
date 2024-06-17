@@ -31,6 +31,18 @@ public class Clube {
 
     private boolean ativo;
 
+    // Construtor
+    public Clube(Long id, String nome, String estado, boolean ativo, LocalDate dataCriacao) {
+        this.id = id;
+        this.nome = nome;
+        this.estado = estado;
+        this.ativo = ativo;
+        this.dataCriacao = dataCriacao;
+    }
+
+    public Clube() {
+
+    }
 
     // Getters and Setters
 

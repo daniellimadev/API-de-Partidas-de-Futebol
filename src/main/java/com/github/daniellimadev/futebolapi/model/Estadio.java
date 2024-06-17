@@ -18,6 +18,15 @@ public class Estadio {
     @Size(min = 3)
     private String nome;
 
+    // Construtor
+    public Estadio(Long id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public Estadio() {
+
+    }
 
     // Getters and Setters
 

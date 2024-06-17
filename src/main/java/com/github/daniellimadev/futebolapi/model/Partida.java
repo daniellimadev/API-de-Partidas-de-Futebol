@@ -38,6 +38,17 @@ public class Partida {
     @FutureOrPresent
     private LocalDateTime dataHora;
 
+    // Construtor com todos os atributos
+    public Partida(Clube clubeCasa, Clube clubeVisitante, Estadio estadio, LocalDateTime dataHora) {
+        this.clubeCasa = clubeCasa;
+        this.clubeVisitante = clubeVisitante;
+        this.estadio = estadio;
+        this.dataHora = dataHora;
+    }
+
+    public Partida() {
+
+    }
 
     // Getters and Setters
     public Long getId() {
